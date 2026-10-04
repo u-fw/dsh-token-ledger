@@ -1,0 +1,18 @@
+# Dependencies and build output
+node_modules/
+pnpm-lock.yaml
+
+# Local scratch: research notes, probe scripts, and anything holding a real
+# machine's paths — never commit this.
+.dsh-scratch/
+
+# Local leak denylist: your own private terms (provider ids, project names,
+# hostnames). Kept out of the repository on purpose; see tools/lint-leaks.mjs.
+.leak-denylist
+
+# Editor and OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

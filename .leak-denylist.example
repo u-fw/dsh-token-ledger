@@ -1,0 +1,25 @@
+# Private terms that must never appear in this repository.
+#
+# Copy this file to `.leak-denylist` (which is gitignored) and list the terms
+# that identify your machine, your accounts, or your usage. `tools/lint-leaks.mjs`
+# fails when any of them appears in a tracked file.
+#
+# One term per line. `#` starts a comment. Matching is case-insensitive and
+# substring-based, so list the distinctive fragment rather than a whole line.
+#
+# Example — replace every line below with your own:
+#
+#   # provider aliases configured in your DSH profile
+#   my-proxy-alias
+#   my-second-provider
+#
+#   # model ids you route through them
+#   some-vendor-model-name
+#
+#   # names of the projects you actually work in
+#   my-secret-project
+#   client-work-repo
+#
+#   # hosts and paths
+#   internal.example.com
+#   my-laptop-hostname

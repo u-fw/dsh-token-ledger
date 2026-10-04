@@ -1,0 +1,8 @@
+# dsh-token-ledger — the bundle's patch layer.
+#
+# One row: the host half. The client half needs no row of its own; the module
+# scanner finds it through this package's `dsh.client` declaration and serves it
+# as part of the same plugin.
+- insert:
+    - id: token-ledger
+      name: dsh-token-ledger

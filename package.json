@@ -1,0 +1,61 @@
+{
+  "name": "dsh-token-ledger",
+  "version": "0.1.0",
+  "description": "Cross-project token ledger for DeepSeek Harness: totals every project's provider-billed token usage",
+  "type": "module",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "verify:live": "node tools/verify-live.mjs",
+    "lint:leaks": "node tools/lint-leaks.mjs"
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "test",
+    "tools",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    ".leak-denylist.example"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle",
+    "token-usage",
+    "cost-tracking"
+  ],
+  "homepage": "https://github.com/u-fw/dsh-token-ledger#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/u-fw/dsh-token-ledger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/u-fw/dsh-token-ledger/issues"
+  },
+  "author": "u-fw",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.15"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer"
+      ]
+    }
+  }
+}

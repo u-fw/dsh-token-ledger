@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # zstd decoding in the corpus tests needs >= 22.15; the package itself has
+        # no dependencies and imports nothing outside node: builtins.
+        node-version: ['22.15', '24']
+    steps:
+      # v5 and newer target the Node 24 action runtime; v4 targeted Node 20, which
+      # runners now force onto Node 24 and annotate as deprecated.
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Unit tests
+        run: node --test test/*.test.mjs
+
+      - name: Leak guard
+        run: node tools/lint-leaks.mjs
